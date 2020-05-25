@@ -17,7 +17,7 @@
 FROM ubuntu:trusty
 
 # Install dependencies for FS
-# Download FS_v5.3.0 from MGH and untar to /opt
+# Download FS_v7.1.0 from MGH and untar to /opt
 RUN apt-get update \
     && apt-get -y install tcsh tar wget libgomp1 perl-modules bc \
     && wget -N -qO- ftp://surfer.nmr.mgh.harvard.edu/pub/dist/freesurfer/7.1.0/freesurfer-linux-centos6_x86_64-7.1.0.tar.gz | tar -xzv -C /opt \
@@ -27,7 +27,7 @@ RUN apt-get update \
     && mkdir /output
 
 # Configure license 
-COPY license /opt/freesurfer/.license
+# COPY license /opt/freesurfer/.license
 
 # Configure basic freesurfer ENV
 ENV OS Linux
