@@ -1,7 +1,7 @@
 ## Clone
 
 ```bash
-git clone 
+git clone https://github.com/stijnimaging/docker_dsri.git
 cd docker_dsri
 ```
 
@@ -20,5 +20,13 @@ From [DockerHub vemonet/freesurfer](https://hub.docker.com/repository/docker/vem
 
 ```bash
 docker run -it --rm --name freesurfer vemonet/freesurfer
+```
+
+### Connect
+
+To connect to a running freesurfer container using SSH:
+
+```bash
+docker exec -it freesurfer bash
 ```
 
