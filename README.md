@@ -11,7 +11,7 @@ cd docker_dsri
 
 ```bash
 cd freesurfer
-docker build -t vemonet/freesurfer .
+docker build -t umdsri/freesurfer .
 ```
 
 ### Run
@@ -19,7 +19,7 @@ docker build -t vemonet/freesurfer .
 From [DockerHub vemonet/freesurfer](https://hub.docker.com/repository/docker/vemonet/freesurfer):
 
 ```bash
-docker run -it --rm --name freesurfer vemonet/freesurfer
+docker run -it --rm --name freesurfer umdsri/freesurfer
 ```
 
 ### Connect
