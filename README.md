@@ -30,3 +30,8 @@ To connect to a running freesurfer container using SSH:
 docker exec -it freesurfer bash
 ```
 
+### Test
+
+```bash
+recon-all
+```

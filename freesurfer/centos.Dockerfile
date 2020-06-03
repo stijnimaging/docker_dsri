@@ -14,7 +14,7 @@
 #
 
 # Start with ubuntu
-FROM ubuntu:18.04
+FROM centos:7
 
 # Remove Debconf Dialog warnings:
 # RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
@@ -24,6 +24,9 @@ FROM ubuntu:18.04
 RUN apt-get update \
     && apt-get -y install tcsh tar wget libgomp1 perl-modules bc dialog apt-utils \
     && wget -N -qO- ftp://surfer.nmr.mgh.harvard.edu/pub/dist/freesurfer/7.1.0/freesurfer-linux-centos6_x86_64-7.1.0.tar.gz | tar -xzv -C /opt \
+    && rm -rf /opt/freesurfer/subjects/* \
+    && rm -rf /opt/freesurfer/average/* \
+    && rm -rf /opt/freesurfer/trctrain/* \
     && mkdir /output
 
 # Configure license 
