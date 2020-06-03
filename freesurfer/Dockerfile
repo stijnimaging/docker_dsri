@@ -14,16 +14,16 @@
 #
 
 # Start with ubuntu
-FROM ubuntu:trusty
+FROM ubuntu:18.04
+
+# Remove Debconf Dialog warnings:
+# RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 
 # Install dependencies for FS
 # Download FS_v7.1.0 from MGH and untar to /opt
 RUN apt-get update \
-    && apt-get -y install tcsh tar wget libgomp1 perl-modules bc \
+    && apt-get -y install tcsh tar wget libgomp1 perl-modules bc dialog apt-utils \
     && wget -N -qO- ftp://surfer.nmr.mgh.harvard.edu/pub/dist/freesurfer/7.1.0/freesurfer-linux-centos6_x86_64-7.1.0.tar.gz | tar -xzv -C /opt \
-    && rm -rf /opt/freesurfer/subjects/* \
-    && rm -rf /opt/freesurfer/average/* \
-    && rm -rf /opt/freesurfer/trctrain/* \
     && mkdir /output
 
 # Configure license 
@@ -50,3 +50,4 @@ ENV PATH /opt/freesurfer/bin:/opt/freesurfer/fsfast/bin:/opt/freesurfer/tktools:
 # Configure bashrc to source FreeSurferEnv.sh
 RUN /bin/bash -c ' echo -e "source $FREESURFER_HOME/FreeSurferEnv.sh &>/dev/null" >> /root/.bashrc '
 
+ENTRYPOINT [ "tail", "-f", "/dev/null" ]
