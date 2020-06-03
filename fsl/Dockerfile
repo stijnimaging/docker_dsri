@@ -1,20 +1,8 @@
-# Create a base freesurfer docker container 
-#
-# Note: The resulting container is ~3GB. 
-# 
-# Example build:
-#   docker build --no-cache -t vistalab/freesurfer-core .
-#
-# Example usage:
-#   docker run -ti \
-#       -v /input/directory:/input \
-#       -v `/output/directory:/output \
-#       vistalab/freesurfer-core \
-#       mri_convert -at /input/inputvolume.m3z /output/outvolume.mgz
-#
+## See FSL 6
+# https://github.com/cbinyu/fsl6-core/blob/master/Dockerfile
 
 # Start with ubuntu
-FROM centos:7
+FROM ubuntu:18.04
 
 # Remove Debconf Dialog warnings:
 # RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
@@ -24,9 +12,6 @@ FROM centos:7
 RUN apt-get update \
     && apt-get -y install tcsh tar wget libgomp1 perl-modules bc dialog apt-utils \
     && wget -N -qO- ftp://surfer.nmr.mgh.harvard.edu/pub/dist/freesurfer/7.1.0/freesurfer-linux-centos6_x86_64-7.1.0.tar.gz | tar -xzv -C /opt \
-    && rm -rf /opt/freesurfer/subjects/* \
-    && rm -rf /opt/freesurfer/average/* \
-    && rm -rf /opt/freesurfer/trctrain/* \
     && mkdir /output
 
 # Configure license 
