@@ -2,9 +2,9 @@
 # Morey Lab
 # Automated Build - Step 1
 
-#FROM ubuntu:17.10
-#LABEL description="Ubuntu 17.10 OS + MRtrix3 installation"
-#LABEL maintainer="Arnav Pondicherry <arnavpon@rwjms.rutgers.edu>"
+FROM ubuntu:17.10
+LABEL description="Ubuntu 17.10 OS + MRtrix3 installation"
+LABEL maintainer="Arnav Pondicherry <arnavpon@rwjms.rutgers.edu>"
 
 # (1) Install MRTrix
 #   - IMPORTANT: use only 1 CPU, but increase Docker RAM usage to 5 GB for installation
